@@ -1,13 +1,14 @@
-library IEEE;
-use IEEE.STD_LOGIC_1164.all;
-use IEEE.STD_LOGIC_UNSIGNED.all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
 
-entity uart is port ();
-
+entity uart is port (
+    A : in std_logic;
+    B : in std_logic;
+    C : out std_logic);
 end uart;
 
 architecture RTL of uart is
 begin
-
-
-end;
+    C <= A and B;
+end RTL;
