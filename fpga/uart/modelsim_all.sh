@@ -2,6 +2,7 @@
 vlib ./work
 
 # compile vhdl files
+vcom -work ./work ./procedure/common.vhd
 vcom -work ./work ./rtl/uart.vhd
 vcom -work ./work ./testbench/tb_uart.vhd
 
