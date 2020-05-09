@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { Product } from '../../shared/models/product'
 import { ProductService } from '../../shared/services/product.service';
+import { FirebaseService } from '../../shared/services/firebase.service';
 
 class ProductListElement extends Product {
   hovered: boolean;
@@ -14,8 +15,10 @@ class ProductListElement extends Product {
 })
 export class ProductListComponent implements OnInit {
   products: ProductListElement [] = null;
+
   constructor(
     private productService: ProductService,
+    private firebaseService: FirebaseService,
   ) { }
 
   ngOnInit(): void {
