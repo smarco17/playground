@@ -1,0 +1,71 @@
+calls     5520, time   0.00 sec 90
+calls     5520, time   0.06 sec 91
+calls     5520, time   0.06 sec 92
+calls     5520, time   3.47 sec 97
+calls     5520, time   3.44 sec 98
+calls     5520, time   3.25 sec 99
+calls   149040, time   2.78 sec 100
+calls     5520, time   0.22 sec 101
+calls     5520, time   0.23 sec 102
+calls     5520, time   0.12 sec 103
+calls     5520, time   0.02 sec 104
+calls     5520, time   0.28 sec 105
+calls     5520, time   0.31 sec 106
+calls     5520, time   0.14 sec 107
+calls     5520, time   0.00 sec 108
+calls     5520, time   0.03 sec 109
+calls     5520, time   0.03 sec 110
+calls     5520, time   0.02 sec 111
+calls     5520, time   0.03 sec 112
+calls     5520, time   0.05 sec 113
+calls     5520, time   0.11 sec 114
+calls     5520, time   0.22 sec 115
+calls     5520, time   0.00 sec 116
+calls     5520, time   0.00 sec 117
+calls     5520, time   0.00 sec 118
+calls     5520, time   0.00 sec 119
+calls     5520, time   0.00 sec 120
+calls     5520, time   0.02 sec 121
+calls     5520, time   0.03 sec 122
+calls     5520, time   0.00 sec 123
+calls     5520, time   0.00 sec 124
+calls     5520, time   0.02 sec 125
+calls     5520, time   0.02 sec 126
+calls     5520, time   0.02 sec 127
+calls     5520, time   0.12 sec 151
+calls     5520, time   0.16 sec 152
+calls     5520, time   0.08 sec 153
+calls     5520, time   0.25 sec 155
+calls     5520, time   0.30 sec 156
+calls     5520, time   0.14 sec 157
+calls     5520, time   0.00 sec 163
+calls     5520, time   0.05 sec 164
+calls     5520, time   0.11 sec 165
+calls      309, time   0.00 sec 167
+calls      309, time   0.00 sec 168
+calls       21, time   0.00 sec 169
+calls      309, time   0.00 sec 171
+calls    50628, time   1.48 sec 300
+calls    32369, time   0.88 sec 301
+calls    73781, time   0.59 sec 302
+calls       28, time   0.00 sec FindInnerPoint
+calls     1846, time   0.03 sec AdFront3::GetLocals
+calls      142, time   0.02 sec Adfront3::RebuildInternal D
+calls      142, time   0.00 sec Adfront3::RebuildInternal C
+calls      142, time   0.00 sec Adfront3::RebuildInternal B
+calls      142, time   0.05 sec Adfront3::RebuildInternal A
+calls     5520, time   0.06 sec Meshing3::GenerateMesh d
+calls     5520, time   3.52 sec Meshing3::GenerateMesh c
+calls       28, time   0.00 sec Meshing3::GenerateMesh b
+calls     1846, time   0.03 sec Meshing3::GenerateMesh a
+calls        2, time   3.73 sec Meshing3::GenerateMesh
+calls       16, time   0.00 sec Mesh::FindOpenElements E
+calls       16, time   0.03 sec Mesh::FindOpenElements D
+calls       16, time   0.72 sec Mesh::FindOpenElements C
+calls       16, time   0.03 sec Mesh::FindOpenElements B
+calls       16, time   0.09 sec Mesh::FindOpenElements A
+calls       16, time   0.86 sec Mesh::FindOpenElements
+calls     4522, time  60.47 sec MeshSmoothing 2D
+calls     9044, time   0.14 sec GetSurfaceElementsOfFace
+calls     4522, time   3.42 sec EdgeSwapping 2D
+calls        1, time 278.86 sec total CPU time
