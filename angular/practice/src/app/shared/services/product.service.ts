@@ -10,7 +10,9 @@ import { Product } from '../models/product';
 })
 
 export class ProductService {
-  TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6Ijg4ODQ4YjVhZmYyZDUyMDEzMzFhNTQ3ZDE5MDZlNWFhZGY2NTEzYzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYW5ndWxhcnByYWN0aWNlLTkzNDhjIiwiYXVkIjoiYW5ndWxhcnByYWN0aWNlLTkzNDhjIiwiYXV0aF90aW1lIjoxNTg4NDY4MTI0LCJ1c2VyX2lkIjoia282RTk5MTFVSWNkNGNnTlgyWjEwRExScGtuMSIsInN1YiI6ImtvNkU5OTExVUljZDRjZ05YMloxMERMUnBrbjEiLCJpYXQiOjE1ODg0NjgxMjQsImV4cCI6MTU4ODQ3MTcyNCwiZW1haWwiOiJza3NraHJAb3V0bG9vay5qcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJza3NraHJAb3V0bG9vay5qcCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.EXi-m6LyK6p1n8AIY0yhCD2hSrf4lrbAtRVYF2TbJKGWW1I9EJoBm2n_cfRbRN8_bqA-8bCzBpU5dnjf7bleVkHdp2xITNpEkc0rpI6Hk7pcXhXpi06UdHsvh5ddexzqvxIZ-29yzwlys6IKt0SJXvi74jlNjdst-3XKU2-CQHlPLKkCMq2le0wsigTUPAoG7GIYBugmerT4OD3ERPMjRfk8vVGNYYlH7I3yY5bQekGGPG_3zUkmqpWnScrrbi1qH6Dq0WUGRv8ivPZQoJHls_J1_PKoinQHzsoMUUBUgGSm7ns7VUGDvxxSZukwhEHZhRJSqu4OoJXe7026CugLxw';
+  BASE_URL = 'https://angularpractice-9348c.firebaseio.com';
+  UID = 'ko6E9911UIcd4cgNX2Z10DLRpkn1';
+  TOKEN = 'eyJhbGciOiJSUzI1NiIsImtpZCI6ImZjMmM4YmIyNmE3OGM0M2JkODYzNzA1YjNkNzkyMWI0ZTY0MjVkNTQiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL3NlY3VyZXRva2VuLmdvb2dsZS5jb20vYW5ndWxhcnByYWN0aWNlLTkzNDhjIiwiYXVkIjoiYW5ndWxhcnByYWN0aWNlLTkzNDhjIiwiYXV0aF90aW1lIjoxNTg5MTExMjU3LCJ1c2VyX2lkIjoia282RTk5MTFVSWNkNGNnTlgyWjEwRExScGtuMSIsInN1YiI6ImtvNkU5OTExVUljZDRjZ05YMloxMERMUnBrbjEiLCJpYXQiOjE1ODkxMTEyNTcsImV4cCI6MTU4OTExNDg1NywiZW1haWwiOiJza3NraHJAb3V0bG9vay5qcCIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJza3NraHJAb3V0bG9vay5qcCJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.T1NMSUAiHltpV4VMoGti0oQvHNxx-xot2ILE_L49TqLRuB62gw5MZ5xxfhbLvIA4HzyS0_6o7BrTSM5hDNq1_yiF_RnZfhGC2d4LUHdCPRcKTVqonFPOIzrLm0p0MSL99w2dxmBhQGzw949we-WviDoXk8pHINqCGJHqYEWVvAhYCd9gGO9MuYXaMC3kGC_hNN6kRyCn2t5QUtONfUhij7q75b1at_iT1vdHR_xDsy-PVP5oAnDbh6rMfnMgO86zrOXxVdSJre4h2jmqILvDk7VxGOYnQgd8IpMES8XdCsnwNTEbqnS885LA-88Oamw2S3dN1dNmTl70ALvEyFw6ow';
 
   products = [
     new Product(1, 'Angular入門書「天地創造の章」', 3800, '神は云った。「Angularあれ」。するとAngularが出来た。'),
@@ -23,16 +25,37 @@ export class ProductService {
     private http: HttpClient,
   ) { }
 
-  list(): Observable<Product[]>{
-    return of(this.products);
+  list(): Observable<Product[]> {
+    return this.http.get(`${this.BASE_URL}/users/${this.UID}/product.json`, { params: { auth: this.TOKEN } }).pipe(
+      map((response: any) => {
+        if (response){
+          return Object.keys(response).map((key: string) => {
+            const prd = response[key];
+            return new Product(key, prd.name, prd.price, prd.description);
+          })
+        } else {
+          return [];
+        }
+      })
+    );
   }
 
-  get(id: number): Observable<Product> {
-    return of(this.products[id - 1]);
+  create(product: Product): Observable<void>{
+    return this.http.post(`${this.BASE_URL}/users/${this.UID}/product.json`, product, { params: { auth: this.TOKEN } }).pipe(
+      map((response: any) => product.key = response.name),
+    );
+  }
+
+  get(key: string): Observable<Product> {
+    return this.http.get(`${this.BASE_URL}/users/${this.UID}/product/${key}.json`, { params: { auth: this.TOKEN }}).pipe(
+      map((response: any) => {
+        return new Product(key, response.name, response.price, response.description);
+      })
+    );
   }
 
   update(product: Product): void {
-    const index = this.products.findIndex( (prd: Product) => prd.id === product.id );
+    const index = this.products.findIndex( (prd: Product) => prd.key === product.key);
     this.products[index] = product;
   }
 }

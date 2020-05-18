@@ -12,7 +12,7 @@ import { ProductService } from '../../shared/services/product.service';
 })
 export class ProductEditComponent implements OnInit {
   productForm = this.fb.group({
-    id: [''],
+    key: [''],
     name: [''],
     price: ['', Validators.compose([Validators.min(100), Validators.max(10000000)])],
     description: [''],
@@ -32,7 +32,7 @@ export class ProductEditComponent implements OnInit {
     this.route.params.subscribe((params: Params) => {
       this.productService.get(params['id']).subscribe((product: Product) => {
         this.productForm.setValue({
-          id: product.id,
+          key: product.key,
           name: product.name,
           price: product.price,
           description: product.description,
