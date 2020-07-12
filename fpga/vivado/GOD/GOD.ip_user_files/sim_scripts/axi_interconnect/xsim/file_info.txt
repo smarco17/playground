@@ -1,0 +1,2 @@
+axi_interconnect.v,verilog,xil_defaultlib,../../../../GOD.srcs/sources_1/ip/axi_interconnect/sim/axi_interconnect.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
