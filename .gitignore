@@ -3,3 +3,6 @@
 *.elf
 *.s
 *.txt
+
+python/*/env
+.python-version
